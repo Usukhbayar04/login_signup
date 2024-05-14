@@ -3,21 +3,22 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
-  // ignore: prefer_typing_uninitialized_variables
-  final controller;
+  final TextEditingController controller;
   final String hintText;
   final bool obscureText;
+  final String? Function(String?)? validator;
 
   const CustomTextField({
     super.key,
     required this.controller,
     required this.hintText,
     required this.obscureText,
+    this.validator,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(
@@ -32,6 +33,7 @@ class CustomTextField extends StatelessWidget {
         fillColor: Colors.grey.shade200,
         filled: true,
       ),
+      validator: validator,
     );
   }
 }
